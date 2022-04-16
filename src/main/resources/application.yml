@@ -1,0 +1,16 @@
+server:
+  port: 9180
+
+# 추후 암호화시켜서 암호 등록
+# 추후 암호화시켜서 pw 등록
+
+memento:
+  kafka:
+    bootstrap-addresses: "13.209.99.135:9092"
+    username: "temp"
+    password: "temp"
+
+#spring:
+#  cloud:
+#    stream:
+#      kafka:
