@@ -19,6 +19,6 @@ class HistoryEventController(
     @GetMapping("/event")
     fun createHistoryEvent() {
         logger.info("hello")
-        historyEventUseCase.produceHistoryEvent(CreateHistoryEventRequest(SiteDomain.GITHUB, "URL"))
+        historyEventUseCase.produceHistoryEvent(CreateHistoryEventRequest(SiteDomain.GITHUB, "URL", "temp"))
     }
 }

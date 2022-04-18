@@ -55,7 +55,8 @@ zookeeper_jaas.conf
 
 ```bash
 # 카프카 서버 -> 주키퍼 인증에 사용
-org.apache.zookeeper.server.auth.DigestLoginModule required
+Server {
+        org.apache.zookeeper.server.auth.DigestLoginModule required
         user_super="zookeeper"
         user_admin="admin-secret";
 };
