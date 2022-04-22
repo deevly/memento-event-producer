@@ -19,7 +19,7 @@ class TopicConfig (
     @Bean
     fun admin(): KafkaAdmin? {
         val configProps: MutableMap<String, Any> = HashMap()
-        configProps[AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG] = "3.39.177.112:9092"
+        configProps[AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG] = mementoConfig.kafka.bootstrapAddresses
         configProps[SaslConfigs.SASL_MECHANISM] = "PLAIN"
         configProps[SaslConfigs.SASL_JAAS_CONFIG] = "org.apache.kafka.common.security.plain.PlainLoginModule   required username='reason'   password='admin-reason';"
         configProps[CommonClientConfigs.SECURITY_PROTOCOL_CONFIG] = "SASL_PLAINTEXT"

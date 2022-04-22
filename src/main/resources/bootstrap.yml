@@ -1,4 +1,0 @@
-aws:
-  kms:
-    keyId: 21fc1e9e-a4c9-4bb6-a4c9-7b5a5cff8e64
-    encryptionAlgorithm: "RSAES_OAEP_SHA_256"

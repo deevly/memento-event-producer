@@ -12,7 +12,9 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.core.ProducerFactory
 
 @Configuration
-class KafkaProducerConfig {
+class KafkaProducerConfig (
+    private val mementoConfig: MementoConfig
+        ) {
 
     @Bean
     fun producerFactory(): ProducerFactory<String, Any> {
@@ -22,7 +24,7 @@ class KafkaProducerConfig {
 
     private fun producerFactoryConfig(): Map<String, Any> {
         val configProps: MutableMap<String, Any> = HashMap()
-        configProps[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = "3.39.177.112:9092"
+        configProps[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = mementoConfig.kafka.bootstrapAddresses
         configProps[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = StringSerializer::class.java
         configProps[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = JsonSerializer::class.java
         configProps[ProducerConfig.BATCH_SIZE_CONFIG] = 10

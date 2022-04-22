@@ -1,16 +1,10 @@
 server:
   port: 9180
 
-# 추후 암호화시켜서 암호 등록
-# 추후 암호화시켜서 pw 등록
-
 memento:
+  kms:
+    key-id: "21fc1e9e-a4c9-4bb6-a4c9-7b5a5cff8e64"
   kafka:
-    bootstrap-addresses: "13.209.99.135:9092"
-    username: "temp"
-    password: "temp"
-
-#spring:
-#  cloud:
-#    stream:
-#      kafka:
+    bootstrap-addresses: "3.34.15.173:9092,3.39.13.67:9092,3.39.163.32:9092"
+    username: "reason"
+    password: "admin-reason"
