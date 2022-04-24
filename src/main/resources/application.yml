@@ -6,5 +6,5 @@ memento:
     key-id: "21fc1e9e-a4c9-4bb6-a4c9-7b5a5cff8e64"
   kafka:
     bootstrap-addresses: "3.34.15.173:9092,3.39.13.67:9092,3.39.163.32:9092"
-    username: "reason"
-    password: "admin-reason"
+    username: "N9e3u1PoGiH38LkDaWY5rS2d9mhnBnsH8rwlTkjOeR/DCV6d99E9KNVMjUDaPzgEtWNi8klDkPfmNStP/v0Nm9FBQWxrt+f2x8FZC0LFplTbpx2xGf9MsuK+i7S7DQ9dgBeURJ8ckF5prwbu2Q6A+/elLmseiWWh+mNV6vBgr5XawL6BQHisceVegpNHSILQuRXENbWmGK0X8PJNcwyLYXcsWF403YH7RfI7G55a5Iu0g3Ax2cAInlw96ZMgUq7ypWG/lr2SpTIp3tdKw04vJQ5biOOMjabPelufifz/YjnW9V1+iIQcWrtWJSuYw/8YRGPmx8aNUBRppk7ifC9bEA=="
+    password: "TmlERbS+bJIltSZWBU5sMMAB77yS4cDPG/wm40IbT9AAWJ5hjsjew+veNCM3IMp/8YOOPhyZzY/D9SPKXDktpnPK2IRPZce6kWYh+hSGio9RfKNAn9Wof/iJe9F7ZHWIvuaFifT4S63U3U7Bf7n1kvxx/+CsdKjhWhp6rEC03NGlMOTJhLcKW9p9X68Gi2jlz3VbAXo2RCKriufpd7Nb39c/j7LAZkGbkk23Sj4FcJYynStADxF265gvZFpkXcsF3cTaRwDYGEG3YB/0naVZ69WSF8eN4IZe1cGyKrp51gE0Ll20WoIZALWBNigAHWThaylysJueJzxHCEvZGg0eIw=="

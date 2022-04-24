@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController
 class HistoryEventController(
     private val historyEventUseCase: HistoryEventUseCase
 ) {
-
     private val logger = KLogging().logger
 
     @GetMapping("/event")
