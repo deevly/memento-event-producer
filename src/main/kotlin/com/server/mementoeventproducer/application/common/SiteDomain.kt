@@ -1,10 +1,17 @@
 package com.server.mementoeventproducer.application.common
 
 enum class SiteDomain(
-    val fullName : String,
-    val prefixUrl : String
+    val topic: String,
+    val prefixUrl: String
 ) {
 
-    GITHUB("Github", "www.github.com"),
-    STACKOF("Stack Overflow", "www.stackoverflow.com")
+    GITHUB("github", "www.github.com"),
+    STACKOF("stackOverFlow", "www.stackoverflow.com"),
+    OTHERS("Others", "etc");
+
+    companion object {
+
+        private val map = values().associateBy(SiteDomain::prefixUrl)
+        fun fromPrefixUrl(prefixUrl: String) = map[prefixUrl] ?: OTHERS
+    }
 }

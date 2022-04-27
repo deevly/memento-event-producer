@@ -1,13 +1,12 @@
 package com.server.mementoeventproducer.application.service
 
-import com.server.mementoeventproducer.application.dto.CreateHistoryEventRequest
+import com.server.mementoeventproducer.application.common.SiteDomain
+import com.server.mementoeventproducer.application.port.`in`.CreateHistoryEventRequest
 import com.server.mementoeventproducer.application.port.`in`.HistoryEventUseCase
+import com.server.mementoeventproducer.application.port.out.HistoryEvent
+import com.server.mementoeventproducer.application.port.out.SendMessagePort
 import lombok.RequiredArgsConstructor
 import mu.KLogging
-import org.springframework.kafka.core.KafkaProducerException
-import org.springframework.kafka.core.KafkaSendCallback
-import org.springframework.kafka.core.KafkaTemplate
-import org.springframework.kafka.support.SendResult
 import org.springframework.messaging.Message
 import org.springframework.messaging.support.MessageBuilder
 import org.springframework.stereotype.Service
@@ -15,37 +14,26 @@ import org.springframework.stereotype.Service
 @Service
 @RequiredArgsConstructor
 class HistoryEventService (
-    private val kafkaTemplate: KafkaTemplate<String, Any>
-) : HistoryEventUseCase {
+    private val sendMessagePort: SendMessagePort
+        ): HistoryEventUseCase {
 
     private val logger = KLogging().logger
 
-    override fun produceHistoryEvent(value : CreateHistoryEventRequest) {
+    override fun produceHistoryEvent(request: CreateHistoryEventRequest) {
 
-        val message : Message<CreateHistoryEventRequest> = MessageBuilder
-            .withPayload(value)
-//            .setHeader(KafkaHeaders.TOPIC, "topic")
+        val historyEvent: HistoryEvent = getHistoryEvent(request)
+
+        val message: Message<HistoryEvent> = MessageBuilder
+            .withPayload(historyEvent)
             .build();
 
-        val future = kafkaTemplate.send(message);
-
-        future.addCallback(listenableFutureCallback(message))
-
-        kafkaTemplate.send("topic", value)
+        sendMessagePort.sendHistoryEventMessage(historyEvent.siteDomain.topic, message)
     }
 
-    fun listenableFutureCallback(message: Any) =
-        object: KafkaSendCallback<String, Any> {
-            override fun onSuccess(result: SendResult<String, Any>?) {
-                logger.info(
-                    "Send Message = [ $message ] with offset=[ ${result!!.recordMetadata.offset()} ]"
-                )
-            }
+    private fun getHistoryEvent(request: CreateHistoryEventRequest): HistoryEvent {
 
-            override fun onFailure(ex: KafkaProducerException) {
-                logger.error(
-                    "Message 전달 오류 [ $message ] due to: ${ex.getFailedProducerRecord<String, String>()}"
-                )
-            }
-        }
+        val siteDomain: SiteDomain = SiteDomain.fromPrefixUrl(request.url)
+        return HistoryEvent(request.user, request.keyword, request.url, request.visitedTime, siteDomain)
+    }
+
 }

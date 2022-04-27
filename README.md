@@ -42,16 +42,16 @@ jaasLoginRenew=3600000
 ```bash
 KafkaServer { # 클라이언트 -> 카프카 서버 인증에 사용
         org.apache.kafka.common.security.plain.PlainLoginModule required
-        username="admin"
-        password="admin-secret"
-        user_admin="admin-secret"
-        user_reason="admin-reason";
+        username="xxx"
+        password="xxx"
+        user_admin="xxx"
+        user_reason="xxx";
 };
 
 Client { # 카프카 서버 -> 주키퍼 인증에 사용
     org.apache.zookeeper.server.auth.DigestLoginModule required
-    username="admin"
-    password="admin-secret";
+    username="xxx"
+    password="xxx";
 };
 ```
 
@@ -61,8 +61,8 @@ Client { # 카프카 서버 -> 주키퍼 인증에 사용
 # 카프카 서버 -> 주키퍼 인증에 사용
 Server {
         org.apache.zookeeper.server.auth.DigestLoginModule required
-        user_super="zookeeper"
-        user_admin="admin-secret";
+        user_super="xxx"
+        user_admin="xxx";
 };
 ```
 
@@ -72,8 +72,8 @@ Server {
 security.protocol=SASL_PLAINTEXT
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required \
-    username="reason" \
-    password="admin-reason";
+    username="xxx" \
+    password="xxx";
 ```
 
 ### 클러스터링

@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.application.config
+package com.server.mementoeventproducer.config
 
 import com.fasterxml.jackson.databind.JsonSerializer
 import org.apache.kafka.clients.CommonClientConfigs
@@ -20,8 +20,8 @@ class KafkaConfig (
     private val mementoConfig: MementoConfig
         ) {
 
-    val decryptedUsername = AwsDecryptor.getPlainText(mementoConfig.kafka.username, mementoConfig.kms.keyId)
-    val decryptedPassword = AwsDecryptor.getPlainText(mementoConfig.kafka.password, mementoConfig.kms.keyId)
+    val decryptedUsername = AwsDescryptor.getPlainText(mementoConfig.kafka.username, mementoConfig.kms.keyId)
+    val decryptedPassword = AwsDescryptor.getPlainText(mementoConfig.kafka.password, mementoConfig.kms.keyId)
     val jaasConfig = String.format("org.apache.kafka.common.security.plain.PlainLoginModule   " +
             "required username='$decryptedUsername'   password='$decryptedPassword';")
 
@@ -63,8 +63,8 @@ class KafkaConfig (
     @Bean
     fun githubTopic(): NewTopic? {
         return TopicBuilder.name("github")
-            .partitions(1)
-            .replicas(1)
+            .partitions(3)
+            .replicas(3)
             .compact()
             .build()
     }
@@ -72,8 +72,8 @@ class KafkaConfig (
     @Bean
     fun stackOverFlowTopic(): NewTopic? {
         return TopicBuilder.name("stackOverFlow")
-            .partitions(10)
-            .replicas(1)
+            .partitions(3)
+            .replicas(3)
             .compact()
             .build()
     }

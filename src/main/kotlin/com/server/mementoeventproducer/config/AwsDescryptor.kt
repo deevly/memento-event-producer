@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.application.config
+package com.server.mementoeventproducer.config
 
 import com.amazonaws.auth.AWSCredentials
 import com.amazonaws.auth.AWSStaticCredentialsProvider
@@ -13,7 +13,7 @@ import mu.KLogging
 import org.apache.commons.codec.binary.Base64
 import java.nio.ByteBuffer
 
-class AwsDecryptor {
+class AwsDescryptor {
 
     companion object {
         private val logger = KLogging().logger
