@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.config
+package com.memento.eventproducer.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;

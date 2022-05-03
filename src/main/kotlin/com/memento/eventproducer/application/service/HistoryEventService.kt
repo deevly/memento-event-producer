@@ -1,10 +1,10 @@
-package com.server.mementoeventproducer.application.service
+package com.memento.eventproducer.application.service
 
-import com.server.mementoeventproducer.application.common.SiteDomain
-import com.server.mementoeventproducer.application.port.`in`.CreateHistoryEventRequest
-import com.server.mementoeventproducer.application.port.`in`.HistoryEventUseCase
-import com.server.mementoeventproducer.application.port.out.HistoryEvent
-import com.server.mementoeventproducer.application.port.out.SendMessagePort
+import com.memento.eventproducer.application.common.SiteDomain
+import com.memento.eventproducer.application.port.`in`.CreateHistoryEventRequest
+import com.memento.eventproducer.application.port.`in`.HistoryEventUseCase
+import com.memento.eventproducer.application.port.out.HistoryEvent
+import com.memento.eventproducer.application.port.out.SendMessagePort
 import lombok.RequiredArgsConstructor
 import mu.KLogging
 import org.springframework.messaging.Message
@@ -32,8 +32,17 @@ class HistoryEventService (
 
     private fun getHistoryEvent(request: CreateHistoryEventRequest): HistoryEvent {
 
-        val siteDomain: SiteDomain = SiteDomain.fromPrefixUrl(request.url)
-        return HistoryEvent(request.user, request.keyword, request.url, request.visitedTime, siteDomain)
+        return HistoryEvent(request.user, request.keyword, request.url, request.visitedTime,
+            SiteDomain.fromPrefixUrl(getPrefixUrl(request.url)))
+    }
+
+    private fun getPrefixUrl(url : String): String {
+        val prefixLastIndex = url.indexOf("/", 8);
+        return if (prefixLastIndex == -1) {
+            url
+        } else {
+            url.substring(0, prefixLastIndex)
+        }
     }
 
 }

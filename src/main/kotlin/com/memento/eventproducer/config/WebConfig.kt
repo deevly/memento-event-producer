@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.config
+package com.memento.eventproducer.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

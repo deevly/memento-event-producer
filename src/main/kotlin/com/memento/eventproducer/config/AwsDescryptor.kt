@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.config
+package com.memento.eventproducer.config
 
 import com.amazonaws.auth.AWSCredentials
 import com.amazonaws.auth.AWSStaticCredentialsProvider

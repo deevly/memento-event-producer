@@ -1,7 +1,7 @@
-package com.server.mementoeventproducer.adaptor.`in`
+package com.memento.eventproducer.adaptor.`in`
 
-import com.server.mementoeventproducer.application.port.`in`.CreateHistoryEventRequest
-import com.server.mementoeventproducer.application.port.`in`.HistoryEventUseCase
+import com.memento.eventproducer.application.port.`in`.CreateHistoryEventRequest
+import com.memento.eventproducer.application.port.`in`.HistoryEventUseCase
 import mu.KLogging
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

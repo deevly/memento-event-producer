@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.application.port.out
+package com.memento.eventproducer.application.port.out
 
 import org.springframework.messaging.Message
 

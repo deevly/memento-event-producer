@@ -1,13 +1,13 @@
-package com.server.mementoeventproducer.application.common
+package com.memento.eventproducer.application.common
 
 enum class SiteDomain(
     val topic: String,
     val prefixUrl: String
 ) {
 
-    GITHUB("github", "www.github.com"),
-    STACKOF("stackOverFlow", "www.stackoverflow.com"),
-    OTHERS("Others", "etc");
+    GITHUB("github", "https://github.com"),
+    STACKOF("stackOverflow", "https://stackoverflow.com"),
+    OTHERS("others", "etc");
 
     companion object {
 

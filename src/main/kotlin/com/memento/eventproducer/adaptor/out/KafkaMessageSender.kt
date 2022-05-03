@@ -1,7 +1,7 @@
-package com.server.mementoeventproducer.adaptor.out
+package com.memento.eventproducer.adaptor.out
 
-import com.server.mementoeventproducer.application.port.out.HistoryEvent
-import com.server.mementoeventproducer.application.port.out.SendMessagePort
+import com.memento.eventproducer.application.port.out.HistoryEvent
+import com.memento.eventproducer.application.port.out.SendMessagePort
 import mu.KLogging
 import org.springframework.kafka.core.KafkaProducerException
 import org.springframework.kafka.core.KafkaSendCallback

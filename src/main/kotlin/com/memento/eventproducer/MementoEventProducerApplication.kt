@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer
+package com.memento.eventproducer
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan

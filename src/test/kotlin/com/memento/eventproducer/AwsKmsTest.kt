@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer
+package com.memento.eventproducer
 
 import com.amazonaws.auth.AWSCredentials
 import com.amazonaws.auth.AWSStaticCredentialsProvider
@@ -46,7 +46,7 @@ class AwsKmsTest {
 
             var passwordEncryptRequest: EncryptRequest = EncryptRequest()
                 .withKeyId(kmsId)
-                .withPlaintext(ByteBuffer.wrap("admin-reason".toByteArray()))
+                .withPlaintext(ByteBuffer.wrap("reason-secret".toByteArray()))
                 .withEncryptionAlgorithm(EncryptionAlgorithmSpec.RSAES_OAEP_SHA_256)
 
             val usernameEncryptResult: EncryptResult = kmsClient.encrypt(usernameEncryptRequest)

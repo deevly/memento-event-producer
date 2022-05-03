@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.application.port.`in`
+package com.memento.eventproducer.application.port.`in`
 
 interface HistoryEventUseCase {
 

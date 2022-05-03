@@ -1,4 +1,4 @@
-package com.server.mementoeventproducer.application.port.`in`
+package com.memento.eventproducer.application.port.`in`
 
 import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDateTime

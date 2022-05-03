@@ -1,6 +1,5 @@
-package com.server.mementoeventproducer.config
+package com.memento.eventproducer.config
 
-import com.fasterxml.jackson.databind.JsonSerializer
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.admin.AdminClientConfig
 import org.apache.kafka.clients.admin.NewTopic
@@ -14,6 +13,7 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory
 import org.springframework.kafka.core.KafkaAdmin
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.core.ProducerFactory
+import org.springframework.kafka.support.serializer.JsonSerializer
 
 @Configuration
 class KafkaConfig (
@@ -37,9 +37,7 @@ class KafkaConfig (
         configProps[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = StringSerializer::class.java
         configProps[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = JsonSerializer::class.java
         configProps[ProducerConfig.BATCH_SIZE_CONFIG] = 10
-        configProps[ProducerConfig.SECURITY_PROVIDERS_CONFIG] = "SASL_PLAINTEXT"
         configProps[SaslConfigs.SASL_MECHANISM] = "PLAIN"
-        println(jaasConfig)
         configProps[SaslConfigs.SASL_JAAS_CONFIG] = jaasConfig
         configProps[CommonClientConfigs.SECURITY_PROTOCOL_CONFIG] = "SASL_PLAINTEXT"
         return configProps
@@ -63,17 +61,26 @@ class KafkaConfig (
     @Bean
     fun githubTopic(): NewTopic? {
         return TopicBuilder.name("github")
-            .partitions(3)
-            .replicas(3)
+            .partitions(1)
+            .replicas(1)
             .compact()
             .build()
     }
 
     @Bean
     fun stackOverFlowTopic(): NewTopic? {
-        return TopicBuilder.name("stackOverFlow")
-            .partitions(3)
-            .replicas(3)
+        return TopicBuilder.name("stackOverflow")
+            .partitions(1)
+            .replicas(1)
+            .compact()
+            .build()
+    }
+
+    @Bean
+    fun anotherTopic(): NewTopic? {
+        return TopicBuilder.name("others")
+            .partitions(1)
+            .replicas(1)
             .compact()
             .build()
     }
