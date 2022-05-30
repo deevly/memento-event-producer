@@ -5,6 +5,6 @@ memento:
   kms:
     key-id: "21fc1e9e-a4c9-4bb6-a4c9-7b5a5cff8e64"
   kafka:
-    bootstrap-addresses: "13.209.43.71:9092"
+    bootstrap-addresses: "54.180.97.11:9092,13.125.227.117:9092,3.37.89.45:9092"
     username: "MtHODN+aOVxGi2TRxl4YXDupTR4QpsJruJbBRw4WbbWj8T8HLullhNS++YUFRSIMzc0qGb2E1RWFc55OzP6ds3mmGoHvoj1KvtQtZObcoGodOHmnO4ujyFp7PJTkMOuZtnhIOOU10agrt56Q/QgNlqk/4F7o4Rfr55pCe4Jdq5Ut7M3gCUJdiv6D77U+pyToPx/+iqOSvyiSsawg9JTLl93yAxa6FRYXwTRHHchuFWp0T0c7HU8zzesVOGlIVBD0JULygxD3cG/ed4bPUsLpRMZYRz9qNcJpeJ0PoUFJh/ETP41WH5U9gD2C3HwupEVTeqWK6PKL61aktqjRS8Xlrw=="
     password: "GIpzfVHRmJhxKuHpjX2JXr29ciQqaP0B3PtD7GKppAFRYvoP5Q8eoVVyMVX4K2Z/horyNA+2GKhNYci/yQuFp6QDmvI9wkD1spRiDXETIyQtN7deyCFrQuf1yy0vW0mFFp4rrHJujvLNKSak4Q/Rmuv3bVcrI56ibJhek/heRh6zfcKoAnIY+fEJ3pswD+aBcF+qfVkObu2fJyiuZCF3GWSMvqDUFQMCy3wQxFGjPB7GfzcJzMP5QTeTBEJl4Rt4pi4otJeddQLL71GKCPvQMWfbfUM+sH9BSz/G/nateX78XjlAQ5J5BGIBR0jIyMlO4+0jShL6wndkxo5L9G2ysg=="

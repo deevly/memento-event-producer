@@ -68,7 +68,7 @@ class KafkaConfig (
     }
 
     @Bean
-    fun stackOverFlowTopic(): NewTopic? {
+    fun stackOverflowTopic(): NewTopic? {
         return TopicBuilder.name("stackOverflow")
             .partitions(1)
             .replicas(1)
