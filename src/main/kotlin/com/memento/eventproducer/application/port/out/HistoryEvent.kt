@@ -8,7 +8,6 @@ data class HistoryEvent(
     val user: String,
     val keyword: String,
     val url: String,
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    val visitedTime: LocalDateTime,
+    val visitedTime: String,
     val siteDomain: SiteDomain
 )

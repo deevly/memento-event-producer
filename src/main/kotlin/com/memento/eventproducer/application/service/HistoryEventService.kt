@@ -32,7 +32,7 @@ class HistoryEventService (
 
     private fun getHistoryEvent(request: CreateHistoryEventRequest): HistoryEvent {
 
-        return HistoryEvent(request.user, request.keyword, request.url, request.visitedTime,
+        return HistoryEvent(request.user, request.keyword, request.url, request.visitedTime.toString(),
             SiteDomain.fromPrefixUrl(getPrefixUrl(request.url)))
     }
 
