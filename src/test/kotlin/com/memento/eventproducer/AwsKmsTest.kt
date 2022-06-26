@@ -11,27 +11,18 @@ import com.amazonaws.services.kms.model.EncryptResult
 import com.amazonaws.services.kms.model.EncryptionAlgorithmSpec
 import org.apache.commons.codec.binary.Base64
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
 import java.nio.ByteBuffer
 
-@ActiveProfiles("test-credentials")
-@SpringBootTest
 class AwsKmsTest {
-
-    @Value("\${accessKey}")
-    lateinit var accessKey : String
-
-    @Value("\${secretKey}")
-    lateinit var secretKey : String
-
-    @Value("\${memento.kms.key-id}")
-    lateinit var kmsId : String
 
     @Test
     fun encrypt() {
+        val accessKey = System.getProperty("aws.key.access")
+        val secretKey = System.getProperty("aws.key.secret")
+        val kmsId = System.getProperty("kms.key")
+
         try {
+
             val awsCredentials: AWSCredentials = BasicAWSCredentials(accessKey, secretKey)
             val kmsClient: AWSKMS = AWSKMSClientBuilder
                 .standard()
