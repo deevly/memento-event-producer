@@ -1,15 +1,15 @@
-FROM appinair/jdk11-maven as base
+FROM openjdk:11-jdk-oracle AS builder
 
-FROM base as builder
+WORKDIR /producer
+COPY gradlew .
+COPY gradle gradle
+COPY build.gradle.kts .
+COPY settings.gradle.kts .
+COPY src src
+RUN chmod +x ./gradlew
+RUN ./gradlew bootJAR
 
-WORKDIR /memento-event-producer
-COPY . /memento-event-producer
-
-RUN chmod 700 gradlew
-RUN ./gradlew bootJar
-
-FROM base as producer
-
-COPY --from=builder /memento-event-producer/build/libs/memento-event-producer-0.0.1-SNAPSHOT.jar /producer.jar
-
+FROM openjdk:11-jdk-oracle
+COPY --from=builder /producer/build/libs/*.jar /producer.jar
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","-Daws.key.access=${ACCESS_KEY}","-Daws.key.secret=${SECRET_KEY}", "/producer.jar"]

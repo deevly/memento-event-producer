@@ -32,7 +32,8 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka")
-//    implementation("org.zalando:spring-cloud-config-aws-kms:5.1.2")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
     implementation("com.amazonaws:aws-java-sdk-core")
     implementation("com.amazonaws:aws-java-sdk-kms")
     implementation("com.amazonaws:jmespath-java")
