@@ -1,4 +1,6 @@
-FROM openjdk:11-jdk-oracle AS builder
+FROM openjdk:11.0.15-jre-slim AS base
+
+FROM base as builder
 
 WORKDIR /producer
 COPY gradlew .
@@ -9,7 +11,8 @@ COPY src src
 RUN chmod +x ./gradlew
 RUN ./gradlew bootJAR
 
-FROM openjdk:11-jdk-oracle
+FROM base as producer
+
 COPY --from=builder /producer/build/libs/*.jar /producer.jar
-EXPOSE 8080
+EXPOSE 9180
 ENTRYPOINT ["java","-jar","-Daws.key.access=${ACCESS_KEY}","-Daws.key.secret=${SECRET_KEY}", "/producer.jar"]
