@@ -1,4 +1,5 @@
 # memento-event-producer
+
 memento Chrome extension의 이벤트 수신 및 Kafka 이벤트 생성기
 
 ## Kafka 구성
@@ -8,12 +9,12 @@ memento Chrome extension의 이벤트 수신 및 Kafka 이벤트 생성기
 EC2 3대 기동
 
 - 로컬에서 ssh config host 등록 및, ec2 접속해서 루트계정 작업 해놓을 것
-    - sudo passwd root
+  - sudo passwd root
 - ec2에 jdk 1.8.0 설치
-    - sudo yum install -y java-1.8.0-openjdk-devel.x86_64
+  - sudo yum install -y java-1.8.0-openjdk-devel.x86_64
 - kafaka 3.1.0 with scala 2.12.0 설치
-    - wget **https://dlcdn.apache.org/kafka/3.1.0/kafka_2.13-3.1.0.tgz**
-    - tar xvf kafka
+  - wget **https://dlcdn.apache.org/kafka/3.1.0/kafka_2.13-3.1.0.tgz**
+  - tar xvf kafka
 
 ### SASL_PLAINTEXT 인증설정
 
@@ -40,7 +41,7 @@ jaasLoginRenew=3600000
 **kafka_server_jaas.conf**
 
 ```bash
-KafkaServer { # 클라이언트 -> 카프카 서버 인증에 사용
+KafkaServer { # client (server application) -> kafka server auth
         org.apache.kafka.common.security.plain.PlainLoginModule required
         username="xxx"
         password="xxx"
@@ -48,7 +49,7 @@ KafkaServer { # 클라이언트 -> 카프카 서버 인증에 사용
         user_reason="xxx";
 };
 
-Client { # 카프카 서버 -> 주키퍼 인증에 사용
+Client { # kafka server -> zookeeper auth
     org.apache.zookeeper.server.auth.DigestLoginModule required
     username="xxx"
     password="xxx";
@@ -58,8 +59,7 @@ Client { # 카프카 서버 -> 주키퍼 인증에 사용
 **zookeeper_jaas.conf**
 
 ```bash
-# 카프카 서버 -> 주키퍼 인증에 사용
-Server {
+Server { # kafka server -> zookeeper auth
         org.apache.zookeeper.server.auth.DigestLoginModule required
         user_super="xxx"
         user_admin="xxx";
@@ -156,3 +156,14 @@ bin/kafka-topics.sh --create --bootstrap-server 172.31.34.94:9092 \
 		--replication-factor 3 --partitions 3 --topic demo-topic \
 		--command-config /home/ec2-user/kafka_2.13-3.1.0/config/console/config.properties
 ```
+
+### Build
+
+1. Docker build
+   ```bash
+   $ docker build -t producer .
+   ```
+2. Docker run
+   ```bash
+   $ docker run --env ACCESS_KEY=${access_key} SECRET_KEY=${secret_key} producer:latest
+   ```
